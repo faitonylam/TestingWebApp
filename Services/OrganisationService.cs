@@ -13,6 +13,9 @@ namespace TestingWebApp.Services
 
         public async Task<List<Organisation>> GetAllOrganisation(int skip,int take)
         {
+            if (_context.Organisations is null)
+                return null;
+
             var result = await _context.Organisations
                 .Skip(skip)
                 .Take(take)
