@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace TestingWebApp.Services
 {
@@ -11,7 +12,7 @@ namespace TestingWebApp.Services
             _context = context;
         }
 
-        public async Task<List<Organisation>> GetAllOrganisation(int skip,int take)
+        public async Task<List<Organisation>> GetAllOrganisation(int skip, int take)
         {
             if (_context.Organisations is null)
                 return null;

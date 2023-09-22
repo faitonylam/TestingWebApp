@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7jFEPBkjYP7ZiCAcjy/DbqOQ56CULgSHIUapCyMp/ygUW3PYw4zDNbhKQI76VN6KUfCO3uksb8wZz+K2A1bMzg==",
+  "dgSpecHash": "gcgySc8CTNvZiFB8d9HL4F3Gvg3ni+9st0ly3TEVwLWHrse5kF1cHB4hSUFjTP4vFJQIwGgU89KvNFFkJeTNsw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tony Lam\\source\\repos\\TestingWebApp\\TestingWebApp.Tests\\TestingWebApp.Tests.csproj",
   "expectedPackageFiles": [
@@ -92,6 +92,7 @@
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.0\\microsoft.extensions.logging.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.logging.eventlog\\7.0.0\\microsoft.extensions.logging.eventlog.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\microsoft.identity.client\\4.47.2\\microsoft.identity.client.4.47.2.nupkg.sha512",
@@ -162,7 +163,7 @@
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.data.datasetextensions\\4.5.0\\system.data.datasetextensions.4.5.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
+    "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\Tony Lam\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR.Protocol;
 using Microsoft.EntityFrameworkCore;
 using TestingWebApp.DTOs;
 using TestingWebApp.Models;
@@ -27,25 +28,41 @@ namespace TestingWebApp.Controllers
         {
             _logger.LogInformation("User [GET] Organisations");
 
-            try { 
+            try
+            {
                 var rowPerPage = 3;
-                var skip = (page-1) * rowPerPage;
+                var skip = (page - 1) * rowPerPage;
                 var count = await _organisationService.GetOrganisationCount();
-                var result = await _organisationService.GetAllOrganisation(skip, rowPerPage);
+                OrganisationListDTO responce;
 
-                OrganisationListDTO responce = new OrganisationListDTO()
+                if (count > 0)
                 {
-                    CurrentPage = page,
-                    TotalPage = (int)Math.Ceiling( count / (float)rowPerPage ),
-                    Data = result
-                };
+                    var result = await _organisationService.GetAllOrganisation(skip, rowPerPage);
 
-                return View(responce);
+                    responce = new OrganisationListDTO()
+                    {
+                        CurrentPage = page,
+                        TotalPage = (int)Math.Ceiling(count / (float)rowPerPage),
+                        Data = result
+                    };
+
+                    return View(responce);
+                }
+                else 
+                {
+                    responce = new OrganisationListDTO()
+                    {
+                        CurrentPage = page,
+                        TotalPage = 0
+                    };
+
+                    return View(responce);
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                return StatusCode(500,"Some error occurred.");
+                _logger.LogError($"Something went wrong: {ex}");
+                return StatusCode(500, "Internal server error");
             }
         }
 
@@ -71,8 +88,8 @@ namespace TestingWebApp.Controllers
             } 
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
-                return StatusCode(500,"Some error occurred.");
+                _logger.LogError($"Something went wrong: {ex}");
+                return StatusCode(500, "Internal server error");
             }   
         }
     }

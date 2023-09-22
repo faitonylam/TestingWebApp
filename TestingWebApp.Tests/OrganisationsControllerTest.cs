@@ -46,7 +46,7 @@ namespace TestingWebApp.Tests
             var viewResult = Assert.IsType<ViewResult>(result);
             var model = Assert.IsType<OrganisationListDTO>(viewResult.Model);
             Assert.NotNull(model);
-            Assert.Equal((int)1, model.Data.Count);
+            Assert.Single(model.Data);
         }
 
         [Fact]

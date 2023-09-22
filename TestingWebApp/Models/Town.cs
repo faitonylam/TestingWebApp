@@ -10,7 +10,7 @@ public partial class Town
     public int TownId { get; set; }
 
     [DisplayName("Town Name")]
-    public string? TownName { get; set; }
+    public string TownName { get; set; }
 
     public virtual ICollection<Organisation> Organisations { get; set; } = new List<Organisation>();
 }
