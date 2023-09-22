@@ -18,6 +18,7 @@ builder.Services.AddScoped<IOrganisationService, OrganisationService>();
 builder.Services.AddControllersWithViews();
 
 builder.Logging.AddConsole();
+builder.Logging.AddDebug();
 
 var app = builder.Build();
 

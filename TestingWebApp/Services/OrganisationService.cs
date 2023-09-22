@@ -30,6 +30,9 @@ namespace TestingWebApp.Services
 
         public async Task<Organisation> GetOrganisationById(string id)
         {
+            if (_context.Organisations is null)
+                return null;
+
             var result = await _context.Organisations.FirstOrDefaultAsync(a => a.OrganisationNumber == id);
             var organisation = await _context.Organisations
                 .Include(o => o.Town)
@@ -41,8 +44,10 @@ namespace TestingWebApp.Services
 
         public async Task<int> GetOrganisationCount()
         {
-            var result = await _context.Organisations.CountAsync();
+            if (_context.Organisations is null)
+                return 0;
 
+            var result = await _context.Organisations.CountAsync();
             return result;
         }
     }
