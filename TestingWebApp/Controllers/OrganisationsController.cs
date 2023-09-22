@@ -26,10 +26,10 @@ namespace TestingWebApp.Controllers
         // GET: Organisations
         public async Task<IActionResult> Index(int page = 1)
         {
-            _logger.LogInformation("User [GET] Organisations");
-
             try
             {
+                _logger.LogInformation("User [GET] Organisations");
+
                 if (page <=0 )
                 {
                     page = 1;
@@ -80,10 +80,10 @@ namespace TestingWebApp.Controllers
         // GET: Organisations/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            _logger.LogInformation("User [GET] Organisations Details Id:{Id}", id);
-
             try
             {
+                _logger.LogInformation("User [GET] Organisations Details Id:{Id}", id);
+
                 if (id == null || _organisationService == null)
                 {
                     return NotFound();
