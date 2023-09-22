@@ -36,19 +36,20 @@ namespace TestingWebApp.Controllers
                 }
 
                 var rowPerPage = 3;
-                var skip = (page - 1) * rowPerPage;
+                
                 var count = await _organisationService.GetOrganisationCount();
 
                 OrganisationListDTO responce;
 
                 if (count > 0)
                 {
-                    var result = await _organisationService.GetAllOrganisation(skip, rowPerPage);
-
                     var totalPage = (int)Math.Ceiling(count / (float)rowPerPage);
 
                     if (page > totalPage)
                         page = totalPage;
+                    
+                    var skip = (page - 1) * rowPerPage;
+                    var result = await _organisationService.GetAllOrganisation(skip, rowPerPage);
 
                     responce = new OrganisationListDTO()
                     {
