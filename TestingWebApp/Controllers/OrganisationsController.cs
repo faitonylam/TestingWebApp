@@ -30,19 +30,30 @@ namespace TestingWebApp.Controllers
 
             try
             {
+                if (page <=0 )
+                {
+                    page = 1;
+                }
+
                 var rowPerPage = 3;
                 var skip = (page - 1) * rowPerPage;
                 var count = await _organisationService.GetOrganisationCount();
+
                 OrganisationListDTO responce;
 
                 if (count > 0)
                 {
                     var result = await _organisationService.GetAllOrganisation(skip, rowPerPage);
 
+                    var totalPage = (int)Math.Ceiling(count / (float)rowPerPage);
+
+                    if (page > totalPage)
+                        page = totalPage;
+
                     responce = new OrganisationListDTO()
                     {
                         CurrentPage = page,
-                        TotalPage = (int)Math.Ceiling(count / (float)rowPerPage),
+                        TotalPage = totalPage,
                         Data = result
                     };
 
