@@ -5,6 +5,7 @@ global using Microsoft.Extensions.Logging.EventLog;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using TestingWebApp.Services;
+using TestingWebApp.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TestdbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddScoped<IDataRepositories, DataRepositories>();
 builder.Services.AddScoped<IOrganisationService, OrganisationService>();
 
 // Add services to the container.
