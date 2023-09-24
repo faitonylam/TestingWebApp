@@ -30,6 +30,11 @@ namespace TestingWebApp.Controllers
             {
                 _logger.LogInformation("User [GET] Organisations");
 
+                if (_organisationService == null)
+                {
+                    return StatusCode(500, "Internal Server Error");
+                }
+
                 if (page <=0 )
                 {
                     page = 1;
@@ -85,9 +90,19 @@ namespace TestingWebApp.Controllers
             {
                 _logger.LogInformation("User [GET] Organisations Details Id:{Id}", id);
 
-                if (id == null || _organisationService == null)
+                if (id == null)
                 {
-                    return NotFound();
+                    return NotFound("Id is missing");
+                }
+
+                if (_organisationService == null)
+                {
+                    return StatusCode(500, "Internal Server Error");
+                }
+
+                if ( id.Length !=8 )
+                {
+                    return BadRequest("Invalid Id");
                 }
 
                 var organisation = await _organisationService.GetOrganisationById(id);
