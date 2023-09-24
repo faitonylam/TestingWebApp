@@ -91,6 +91,7 @@ namespace TestingWebApp.Controllers
                 }
 
                 var organisation = await _organisationService.GetOrganisationById(id);
+
                 if (organisation == null)
                 {
                     return NotFound();

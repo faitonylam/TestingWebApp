@@ -1,54 +1,45 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using TestingWebApp.Repositories;
 
 namespace TestingWebApp.Services
 {
     public class OrganisationService : IOrganisationService
     {
-        private readonly TestdbContext _context;
+        private readonly IDataRepositories _dataRepo;
 
-        public OrganisationService(TestdbContext context)
+        public OrganisationService(IDataRepositories dataRepo)
         {
-            _context = context;
+            _dataRepo = dataRepo;
         }
 
-        public async Task<List<Organisation>> GetAllOrganisation(int skip, int take)
+        public async Task<List<Organisation>?> GetAllOrganisation(int skip, int take)
         {
-            if (_context.Organisations is null)
+            if (_dataRepo.Organisations is null)
                 return null;
 
-            var result = await _context.Organisations
-                .OrderBy(o => o.OrganisationNumber)
-                .Skip(skip)
-                .Take(take)
-                .Include(o => o.Town)
-                .Include(o => o.Employees)
-                .ToListAsync();
+            var result = await _dataRepo.Organisations.GetAllwithEmployees(skip, take);
 
             return result;
         }
 
         public async Task<Organisation> GetOrganisationById(string id)
         {
-            if (_context.Organisations is null)
+            if (_dataRepo.Organisations is null)
                 return null;
 
-            var result = await _context.Organisations.FirstOrDefaultAsync(a => a.OrganisationNumber == id);
-            var organisation = await _context.Organisations
-                .Include(o => o.Town)
-                .Include(o => o.Employees)
-                .FirstOrDefaultAsync(o => o.OrganisationNumber == id);
+            var result = await _dataRepo.Organisations.GetByID(id);
 
             return result;
         }
 
         public async Task<int> GetOrganisationCount()
         {
-            if (_context.Organisations is null)
+            if (_dataRepo.Organisations is null)
                 return 0;
 
-            var result = await _context.Organisations.CountAsync();
-            return result;
+            var result = await _dataRepo.Organisations.GetAll();
+            return result.Count();
         }
     }
 }
